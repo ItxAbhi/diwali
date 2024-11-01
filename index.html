@@ -37,6 +37,27 @@
             height: 100%;
             object-fit: cover; /* Ensures video covers entire screen without stretching */
         }
+
+        /* Share button styling */
+        .share-button {
+            position: fixed; /* Fix the button position */
+            bottom: 20px; /* Position from the bottom */
+            left: 50%; /* Center horizontally */
+            transform: translateX(-50%); /* Adjust to center */
+            background-color: #25D366; /* WhatsApp color */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            z-index: 100; /* Ensure it’s above other elements */
+        }
+
+        .share-button:hover {
+            background-color: #128C7E; /* Darker green on hover */
+        }
     </style>
 </head>
 <body>
@@ -44,5 +65,19 @@
         <source src="diwali_v3.mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
+
+    <!-- Share Button -->
+    <button class="share-button" onclick="shareOnWhatsApp()">Share on WhatsApp</button>
+
+    <script>
+        function shareOnWhatsApp() {
+            const message = "Celebrate Diwali with this special greeting! 🎆";
+            const imageUrl = "https://itxabhi.github.io/diwali/diwali_preview.jpg"; // Your image URL
+            const shareUrl = "https://itxabhi.github.io/diwali"; // Your webpage URL
+            const whatsappUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(message)}%20${encodeURIComponent(shareUrl)}%20${encodeURIComponent(imageUrl)}`;
+
+            window.open(whatsappUrl, '_blank');
+        }
+    </script>
 </body>
 </html>
